@@ -8,7 +8,10 @@
 <body>
     <div id="app">
         <app-header></app-header>
-        <app-content></app-content>
+        <app-footer></app-footer>
+    </div>
+    <div id="app2">
+        <app-header></app-header>
         <app-footer></app-footer>
     </div>
 
@@ -19,9 +22,7 @@
         Vue.component('app-header',{
             template: '<h1>header</h1>'
         })
-        Vue.component('app-content',{
-            template: '<div>content</div>'
-        })
+        
         new Vue({
             el: '#app',
             components: {
@@ -32,6 +33,20 @@
                 }
             }
         });
+
+        new Vue({
+            el: '#app2',
+            components: {
+                'app-footer': {
+                    template: '<footer>footer</footer>'
+                }
+            }
+        })
+
+        //전역 지역 컴포넌트 차이
+        // 전역 컴포넌트로 등록하면 모든 인스턴스에 컴포넌트가 등록되어서 따로 등록할 필요가 없음
+        // 지역 컴포넌트로 등록하면 다른 인스턴스에서 컴포넌트를 사용할 수 없고 따로 지역 컴포넌트로 등록해야함
+        // 실제 서비스할땐 지역 컴포넌트로 등록하는 경우가 대부분
     </script>
 </body>
 </html>
