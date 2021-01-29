@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <app-header v-bind:프롭스 속성 이름="상위컴포넌트의 데이터 이름">props 내려받기</app-header> -->
+        <app-header v-bind:propsdata="num"></app-header><!--6: props 전달-->
+        <app-content v-on:pass="deliverNum"></app-content><!-- 4: 상위컴포넌트로 이벤트 전달-->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var appHeader = {
+            template: '<div>header</div>',
+            props: ['propsdata']//5: props 속성이름 생성
+        }
+        var appContent = {
+            template: '<div>content<button v-on:click="passNum">pass</button></div>',//1:event를 생성
+            methods: {
+                passNum : function(){
+                    this.$emit('pass', 10) //2: 메서드로 이벤트 발생(payload(인자)가 상위 컴포넌트로 전달됨)
+                }
+            }
+        }
+        new Vue({
+            el : '#app',
+            components: {
+                'app-header': appHeader,
+                'app-content': appContent
+            },
+            data: {
+                num: 0,
+            },
+            methods: {//3: 이벤트를 받을 메서드 생성
+                deliverNum: function(value){
+                    this.num = value;//하위컴포넌트의 인자가 value에 받음
+                }
+            }
+        });
+    </script>
+</body>
+</html>
