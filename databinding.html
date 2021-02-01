@@ -10,6 +10,17 @@
         <p v-bind:id="uuid" v-bind:class="name">{{num}}</p>
         <!--<p id="abc1234">{{num}}</p>-->
         <p>{{dbNum}}</p>
+        <div v-if="loading">
+            Loading...
+        </div>
+        <div v-else>
+            test user has been logged in
+        </div>
+        <div v-show="loading">
+            Loading...
+            <!-- v-show 는 flase면 css display: none;으로 숨기고
+            v-if는 false면 아예 DOM에서 사라짐 -->
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
@@ -18,7 +29,8 @@
             data: {
                 num: 10,
                 uuid: 'abc1234',
-                name: 'text-blue'
+                name: 'text-blue',
+                loading: true
             },
             computed: { //계산된 속성
                 dbNum: function(){
