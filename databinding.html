@@ -21,6 +21,10 @@
             <!-- v-show 는 flase면 css display: none;으로 숨기고
             v-if는 false면 아예 DOM에서 사라짐 -->
         </div>
+        <!-- TODO: 인풋 박스를 만들고 입력된 값을 p태그에 출력해보자 -->
+        <!-- vue.js.org 공식문서에서 키워드 검색 -->
+        <input type="text" v-model="message">
+        <p>Message is {{message}}</p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
@@ -30,7 +34,8 @@
                 num: 10,
                 uuid: 'abc1234',
                 name: 'text-blue',
-                loading: true
+                loading: true,
+                message: '',
             },
             computed: { //계산된 속성
                 dbNum: function(){
