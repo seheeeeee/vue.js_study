@@ -2,10 +2,17 @@
   <div>
     <!-- 최상위 element는 하나만 있어야함 -->
     {{str}}
+    <app-header></app-header>
   </div>
 </template>
 
 <script>
+import AppHeader from './components/AppHeader.vue';
+//AppHeader를 정의하고 컴포넌트를 받아옴
+//= var AppHeader = {
+//   template: '<header><h1>Header</h1></header>'
+// }
+
 // new Vue({
 //   data: {
 //     str: 'hi'
@@ -17,6 +24,9 @@ export default {
     return{
       str: 'hi'
     }
+  },
+  components: {
+    'app-header': AppHeader
   }
 }
 </script>
