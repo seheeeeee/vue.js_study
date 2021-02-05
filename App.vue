@@ -2,7 +2,9 @@
   <div>
     <!-- 최상위 element는 하나만 있어야함 -->
     <!-- <app-header v-bind:프롭스 속성 이름="상위컴포넌트 데이터 이름"></app-header> -->
-    <app-header v-bind:propsdata="str"></app-header>
+    <app-header 
+    v-bind:propsdata="str" 
+    v-on:renew="renewStr"></app-header>
   </div>
 </template>
 
@@ -27,6 +29,11 @@ export default {
   },
   components: {
     'app-header': AppHeader
+  },
+  methods: {
+    renewStr: function(){
+      this.str = 'hi';
+    }
   }
 }
 </script>
