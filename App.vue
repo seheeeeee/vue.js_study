@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- 최상위 element는 하나만 있어야함 -->
-    {{str}}
-    <app-header></app-header>
+    <!-- <app-header v-bind:프롭스 속성 이름="상위컴포넌트 데이터 이름"></app-header> -->
+    <app-header v-bind:propsdata="str"></app-header>
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
   //컴포넌트 재사용을 위해 다른 컴포넌트의 data를 참조할 수 없기 때문에 객체로 저장할 수 없고 function return을 사용해야함
   data: function(){
     return{
-      str: 'hi'
+      str: 'Header'
     }
   },
   components: {
